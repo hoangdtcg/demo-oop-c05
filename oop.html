@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <script src="oop.js"></script>
+</head>
+<style>
+    tr,
+    td,
+    th {
+        border: 1px solid black;
+    }
+</style>
+
+<body>
+<h1>Add New Product</h1>
+<input type="text" id="name" placeholder="Name of product" />
+<input type="text" id="color" placeholder="Color" />
+<input type="text" id="price" placeholder="Price" />
+<input type="text" id="description" placeholder="Description" />
+<button onclick="add()">Add</button></br>
+<h2>Display All Product</h2>
+<table id="display" style="border: 1px solid black"></table>
+<script>
+    let products = [];
+    function display() {
+        let str = "";
+        str += `<tr><th>Product Name</th>
+                    <th>Color</th>
+                    <th>Price</th>
+                    <th>Description</th></tr>`;
+        for (let i = 0; i < products.length; i++) {
+            str+= products[i].getHtml();
+        }
+        document.getElementById('display').innerHTML = str;
+    }
+    display();
+
+    function add() {
+        let name = document.getElementById('name').value;
+        let color = document.getElementById('color').value;
+        let price = document.getElementById('price').value;
+        let description = document.getElementById('description').value;
+
+        let product = new Product();
+        product.name = name;
+        product.color = color;
+        product.price = price;
+        product.desc = description;
+
+        products.push(product);
+        display();
+    }
+
+    function del(index) {
+        products.splice(index, 1);
+        display();
+    }
+
+    function edit(index) {
+        let sanPham = prompt('Nhập tên sản phẩm mới:');
+        let mauSac = prompt('Nhập màu sắc:');
+        let Gia = prompt('Nhập giá tiền:');
+        let moTa = prompt('Nhập mô tả:');
+        products[index] = [sanPham, mauSac, Gia, moTa];
+        display();
+    }
+</script>
+</body>
+
+</html>

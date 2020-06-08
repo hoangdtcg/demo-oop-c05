@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="600px" height="400px" style="border: 1px solid black;background-color: bisque"></canvas>
+<script>
+    let canvas = document.getElementById("myCanvas");
+    let pen = canvas.getContext("2d");
+
+    pen.beginPath();
+    pen.moveTo(0,0);
+    pen.lineTo(100,100);
+    pen.stroke();
+    pen.closePath();
+
+    pen.beginPath();
+    pen.arc(100,100,50,0,2*Math.PI);
+    pen.strokeStyle = "blue";
+    pen.fillStyle = "orange";
+    pen.stroke();
+    pen.fill();
+    pen.closePath();
+
+    pen.beginPath();
+    pen.fillStyle = "green";
+    pen.fillRect(100,100,50,80);
+    pen.closePath();
+
+    pen.clearRect(100,100,50,50);
+</script>
+</body>
+</html>
